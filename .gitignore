@@ -8,3 +8,9 @@ bankdata.txt
 
 # File thu vien
 *.lib
+
+# Cau hinh Cursor (khong push len GitHub)
+.cursor/
+.claude/
+AGENTS.md
+CLAUDE.md
