@@ -174,3 +174,30 @@ credit.exe < demo_input.txt
 - File `bankdata.txt` luu du lieu. Chay lai chuong trinh se tu dong tai len.
 - Xoa `bankdata.txt` de chay lai tu dau.
 - Ma PIN trong ban demo la `1234` / `5678` / `1111`.
+
+---
+
+## 8. Repository (GitHub)
+
+Repo: https://github.com/nghtuantu228/CreditManagementProgram
+
+```
+credit.c          <- toan bo chuong trinh
+build.bat         <- script bien dich
+demo_input.txt    <- kich ban nhap de demo
+README.md         <- tai lieu nay
+.gitignore        <- loai tru file bien dich + cau hinh Cursor
+```
+
+Cac thu muc `.cursor/`, `.claude/`, file `AGENTS.md` va `CLAUDE.md` la **cau hinh cong cu
+theo truc tiep voi Cursor IDE**, khong lien quan toi do an nen da duoc loai khoi git.
+
+**Lenh git thuong dung:**
+
+```bash
+git status              # xem trang thai
+git add credit.c        # dua file vao vung chuan bi
+git commit -m "mo ta"   # tao commit
+git push                # day len GitHub
+```
+
