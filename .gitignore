@@ -1,0 +1,10 @@
+# File bien dich
+*.exe
+*.obj
+*.o
+
+# File du lieu chay thu
+bankdata.txt
+
+# File thu vien
+*.lib
