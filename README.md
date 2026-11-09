@@ -1,38 +1,41 @@
-# CHUONG TRINH QUAN LY TIN DUNG
+# CHƯƠNG TRÌNH QUẢN LÝ TÍN DỤNG
 
-Do an Lap trinh C - Nam 1 Dai hoc, nganh Ky thuat Phan mem.
-Toan bo chuong trinh nam trong **mot file duy nhất**: `credit.c`, chay hoan toan tren terminal.
+Đồ án Lập trình C — Năm 1 Đại học, ngành Kỹ thuật Phần mềm.
+Toàn bộ chương trình nằm trong **một file duy nhất**: `credit.c`, chạy hoàn toàn trên terminal.
 
 ---
 
-## 1. Cach bien dich va chay
+## 1. Cách biên dịch và chạy
 
-### Cach 1: Visual Studio (may nay da co san Build Tools)
-Chay `build.bat` (se bien dich ra `credit.exe`), hoac mo `credit.c` bang Visual Studio va bam F5.
+### Visual Studio (máy này đã có sẵn Build Tools)
+- Chạy `build.bat` → tạo ra `credit.exe`
+- Hoặc mở `credit.c` bằng Visual Studio và bấm **F5**
 
-### Cach 2: Dev-C++ / Code::Blocks
-Tao project, them `credit.c`, bien dich (bien dich chuan C99, khong can flag gi them).
+### Dev-C++ / Code::Blocks
+Tạo project, thêm `credit.c`, biên dịch (chuẩn C99, không cần thêm flag).
 
-### Cach 3: Linux / macOS / WSL
-```
+### Linux / macOS / WSL
+```bash
 gcc -o credit credit.c
 ./credit
 ```
 
 ---
 
-## 2. Chuc nang ( dung yeu cau de tai )
+## 2. Các chức năng
 
-| STT | Chuc nang | Vi tri trong code |
-|-----|-----------|-------------------|
-| 1 | Tao tai khoan moi (so TK, ten, PIN, loai TK, so du ban dau) | `chucNangTaoTaiKhoan()` |
-| 2 | Dang nhap vao tai khoan (so TK + ma PIN) | `chucNangDangNhap()`, `dangNhap()` |
-| 3 | Chuyen tien vao so tai khoan khac | `chuyenTien()` |
-| 4 | Kiem tra so du | `kiemTraSoDu()` |
-| 5 | Sap xep cac tai khoan theo thu tu | `sapXepTaiKhoan()` |
-| (them) | Gui / rut tien, xem lich su giao dich, luu du lieu | `guiTien()`, `rutTien()`, `inLichSu()`, `luuDuLieu()` |
+| STT | Chức năng | Hàm xử lý |
+|-----|-----------|-----------|
+| 1 | Tạo tài khoản mới (số TK, họ tên, PIN, loại TK, số dư ban đầu) | `chucNangTaoTaiKhoan()` |
+| 2 | Đăng nhập vào tài khoản (số TK + mã PIN) | `chucNangDangNhap()`, `dangNhap()` |
+| 3 | Chuyển tiền sang tài khoản khác | `chuyenTien()` |
+| 4 | Kiểm tra số dư | `kiemTraSoDu()` |
+| 5 | Sắp xếp các tài khoản theo thứ tự | `sapXepTaiKhoan()` |
+| 6 | *(thêm)* Gửi / rút tiền | `guiTien()`, `rutTien()` |
+| 7 | *(thêm)* Xem lịch sử giao dịch | `inLichSu()` |
+| 8 | *(thêm)* Lưu / tải dữ liệu | `luuDuLieu()`, `taiDuLieu()` |
 
-### Man hinh chinh
+### Màn hình chính
 ```
 ==============================================================
   QUAN LY TIN DUNG
@@ -52,55 +55,55 @@ gcc -o credit credit.c
 
 ---
 
-## 3. Kien thuc C duoc su dung
+## 3. Kiến thức C được vận dụng
 
-| Kien thuc | Dung o dau |
+| Kiến thức | Dùng ở đâu |
 |-----------|------------|
-| **Cau truc dieu khien rẽ nhánh** | `if / else if / else` trong `nhapSo()`, `nhapChuoi()` kiem tra du lieu nhap; `switch` trong `menuTaiKhoan()`, `main()`, `soSanhTK()` |
-| **Cau truc dieu khien lap** | `while` trong `nhapSo()`, `nhapChuoi()`, `sapXepTaiKhoan()`; `for` trong `inDanhSachTK()`, `inLichSu()`, `luuDuLieu()`; `while (1)` la menu chinh |
-| **Ham va chuong trinh con** | ~20 ham: `xoaManHinh()`, `nhapSo()`, `nhapChuoi()`, `timTaiKhoan()`, `taoTaiKhoan()`, `dangNhap()`, `guiTien()`, `rutTien()`, `chuyenTien()`, `sapXepTaiKhoan()`, `luuDuLieu()`, `taiDuLieu()`... |
-| **Mang chuoi ky tu** | `char soTK[MAX_ACCOUNT]`, `char tenTK[MAX_NAME]`, `char pin[MAX_PIN]` trong `struct TaiKhoan` |
-| **Cau truc (struct)** | `struct TaiKhoan`, `struct GiaoDich`, `struct NganHang` |
-| **Con tro (*)** | `TaiKhoan *timTaiKhoan()` tra ve dia chi phan tu trong mang; con tro dung de ghi vao tai khoan cua nguoi dung dang dang nhap |
-| **Mang (array)** | `dsTK[MAX_ACC]`, `dsGD[MAX_TX]` |
+| **Rẽ nhánh** `if / else / switch` | Kiểm tra dữ liệu nhập trong `nhapSo()`, `nhapChuoi()`; `switch` cho menu và so sánh tiêu chí |
+| **Lặp** `while / for` | `while` lặp lại khi nhập sai; `for` duyệt mảng; `while (1)` là menu chính |
+| **Hàm & chương trình con** | Khoảng 20 hàm: `nhapSo()`, `nhapChuoi()`, `timTaiKhoan()`, `taoTaiKhoan()`, `guiTien()`, `chuyenTien()`, `sapXepTaiKhoan()`, `luuDuLieu()`… |
+| **Mảng chuỗi ký tự** | `char soTK[20]`, `char tenTK[50]`, `char pin[6]` trong `struct TaiKhoan` |
+| **Cấu trúc (struct)** | `struct TaiKhoan`, `struct GiaoDich`, `struct NganHang` |
+| **Con trỏ** | `TaiKhoan *timTaiKhoan()` trả về **địa chỉ** phần tử trong mảng |
+| **Mảng (array)** | `dsTK[50]`, `dsGD[100]` |
 
 ---
 
-## 4. Cau truc du lieu
+## 4. Cấu trúc dữ liệu
 
 ```c
 typedef struct {
-    char     soTK[MAX_ACCOUNT];  /* so tai khoan */
-    char     tenTK[MAX_NAME];    /* ho ten chu ho */
-    char     pin[MAX_PIN];       /* ma PIN */
-    char     loaiTK[MAX_TYPE];   /* loai tai khoan */
-    long long soDu;              /* so du tai khoan */
-    int      trangThai;          /* 1 = dang hoat dong, 0 = bi khoa */
-    int      soGD;               /* so giao dich da thuc hien */
+    char     soTK[MAX_ACCOUNT];  /* số tài khoản */
+    char     tenTK[MAX_NAME];    /* họ tên chủ hộ */
+    char     pin[MAX_PIN];       /* mã PIN */
+    char     loaiTK[MAX_TYPE];   /* loại tài khoản */
+    long long soDu;              /* số dư */
+    int      trangThai;          /* 1 = hoạt động, 0 = khóa */
+    int      soGD;               /* số giao dịch đã thực hiện */
 } TaiKhoan;
 ```
 
 ---
 
-## 5. Kien thuc dung trong code
+## 5. Giải thích các đoạn code quan trọng
 
-### a) Con tro tro toi phan tu trong mang - `timTaiKhoan()`
+### a) Con trỏ trỏ tới phần tử trong mảng — `timTaiKhoan()`
 ```c
 TaiKhoan *timTaiKhoan(const char *soTK)
 {
     int i;
     for (i = 0; i < nganHang.soTK; i++) {
         if (strcmp(nganHang.dsTK[i].soTK, soTK) == 0) {
-            return &nganHang.dsTK[i];   /* dia chi phan tu trong mang */
+            return &nganHang.dsTK[i];   /* địa chỉ phần tử trong mảng */
         }
     }
     return NULL;
 }
 ```
-`&nganHang.dsTK[i]` lay **dia chi** (con tro) cua tai khoan thu i trong mang. Tra ve con do
-thi moi sua doi so du se ghi thang vao du lieu that, khong tao ban sao.
+`&nganHang.dsTK[i]` lấy **địa chỉ** (con trỏ) của tài khoản thứ `i` trong mảng.
+Trả về con trỏ này thì khi sửa số dư, dữ liệu ghi thẳng vào tài khoản thật — không tạo bản sao.
 
-### b) Sap xep - Selection Sort voi ham so sanh tach rieng
+### b) Sắp xếp — Selection Sort, tách hàm so sánh riêng
 ```c
 for (i = 0; i < nganHang.soTK - 1; i++) {
     viTriDacBiet = i;
@@ -110,70 +113,71 @@ for (i = 0; i < nganHang.soTK - 1; i++) {
             viTriDacBiet = j;
         }
     }
-    if (viTriDacBiet != i) {   /* doi cho 2 tai khoan */
+    if (viTriDacBiet != i) {   /* đổi chỗ hai tài khoản */
         tam = nganHang.dsTK[i];
         nganHang.dsTK[i] = nganHang.dsTK[viTriDacBiet];
         nganHang.dsTK[viTriDacBiet] = tam;
     }
 }
 ```
-Mot vong lap tim phan tu "dac biet" (nho nhat khi tang dan, lon nhat khi giam dan) roi doi
-cho no ve dung vi tri. `soSanhTK()` tach rieng ra de co the doi tieu chi ma khong sua
-vong lap.
+Mỗi vòng lặp tìm phần tử "đặc biệt" (nhỏ nhất khi tăng dần, lớn nhất khi giảm dần)
+rồi đổi chỗ nó về đúng vị trí. Hàm `soSanhTK()` tách riêng nên muốn đổi tiêu chí
+sắp xếp cũng không cần sửa vòng lặp.
 
-### c) Kiem tra du lieu nhap - vong lap `while` + `continue`
+### c) Kiểm tra dữ liệu nhập — vòng lặp `while` + `continue`
 ```c
 while (1) {
-    if (!nhapChuoi("  Nhap so tai khoan: ", soTK, MAX_ACCOUNT)) return;
+    if (!nhapChuoi("  So TK: ", soTK, MAX_ACCOUNT)) return;
     if (!toanSo(soTK) || strlen(soTK) < 6) {
-        printf("  [!] So tai khoan phai gom it nhat 6 chu so.\n");
-        continue;          /* nhap sai -> nhap lai */
+        printf("  [!] So TK phai co it nhat 6 chu so.\n");
+        continue;          /* nhập sai → nhập lại */
     }
     if (timTaiKhoan(soTK) != NULL) {
-        printf("  [!] So tai khoan nay da ton tai.\n");
+        printf("  [!] So TK da ton tai. Chon so khac.\n");
         continue;
     }
-    break;                 /* nhap dung -> thoat vong lap */
+    break;                 /* nhập đúng → thoát vòng lặp */
 }
 ```
 
-### d) Chuyen tien - cap nhat dong thoi hai tai khoan
+### d) Chuyển tiền — cập nhật đồng thời hai tài khoản
 ```c
-tkNguon->soDu -= soTien;   /* tru o tai khoan gui */
-tkNhan->soDu  += soTien;   /* cong o tai khoan nhan */
+tkNguon->soDu -= soTien;   /* trừ ở tài khoản gửi */
+tkNhan->soDu  += soTien;   /* cộng ở tài khoản nhận */
 ghiGiaoDich(tkNguon->soTK, GD_CHUYEN, soTien, tkNguon->soDu);
 ```
 
 ---
 
-## 6. Kich ban thuyet trinh (demo)
+## 6. Kịch bản thuyết trình (khoảng 6 phút)
 
-File `demo_input.txt` chua san cac buoc nhap. Neu chay tu dong:
-
+File `demo_input.txt` đã chứa sẵn các bước nhập. Chạy tự động:
 ```
 credit.exe < demo_input.txt
 ```
 
-**Kich ban thuyet trinh de xuat (6 phut):**
+**Các bước trình bày:**
 
-1. **Mo dau** - gioi thieu ten do an, chuc nang chinh.
-2. **Tao tai khoan** - tao 3 tai khoan: `1000000001 / Nguyen Van A / Tiet kiem`,
-   `1000000002 / Tran Thi B / Thanh toan`, `1000000003 / Le Van C / Tin dung`.
-   *Diem hay:* nhap sai PIN khong khop va nhap trung so TK de hien thi co kiem tra.
-3. **Dang nhap** - dang nhap `1000000001 / 1234`, sau do thu sai PIN.
-4. **Chuc nang tien** - gui 2.000.000, rut 1.000.000, chuyen 1.000.000 sang `1000000002`.
-5. **Kiem tra so du** - xem so du 3 tai khoan de thay so tien "di dung cho".
-6. **Sap xep** - sap xep theo so du giam dan, theo ten A-Z.
-7. **Lich su giao dich** - xem lich su cua tai khoan vua giao dich.
-8. **Luu/load** - luu du lieu, thoat, mo lai chuong trinh de du lieu van con.
+1. **Mở đầu** — giới thiệu tên đồ án, các chức năng chính.
+2. **Tạo tài khoản** — tạo 3 tài khoản:
+   - `1000000001 / Nguyễn Văn A / Tiết kiệm`
+   - `1000000002 / Trần Thị B / Thanh toán`
+   - `1000000003 / Lê Văn C / Tín dụng`
+   - *Điểm hay:* nhập sai PIN không khớp và nhập trùng số TK để thể hiện có kiểm tra.
+3. **Đăng nhập** — đăng nhập `1000000001 / 1234`, sau đó thử sai PIN.
+4. **Chức năng tiền** — gửi 2.000.000, rút 1.000.000, chuyển 1.000.000 sang `1000000002`.
+5. **Kiểm tra số dư** — xem số dư cả 3 tài khoản để thấy tiền "đi đúng cho".
+6. **Sắp xếp** — sắp xếp theo số dư giảm dần, rồi theo tên A–Z.
+7. **Lịch sử giao dịch** — xem lịch sử của tài khoản vừa giao dịch.
+8. **Lưu / tải** — lưu dữ liệu, thoát, mở lại chương trình để dữ liệu vẫn còn.
 
 ---
 
-## 7. Luu y
+## 7. Lưu ý
 
-- File `bankdata.txt` luu du lieu. Chay lai chuong trinh se tu dong tai len.
-- Xoa `bankdata.txt` de chay lai tu dau.
-- Ma PIN trong ban demo la `1234` / `5678` / `1111`.
+- File `bankdata.txt` lưu dữ liệu. Chạy lại chương trình sẽ tự động tải lên.
+- Xoá `bankdata.txt` để chạy lại từ đầu.
+- Mã PIN trong bản demo: `1234` / `5678` / `1111`.
 
 ---
 
@@ -182,22 +186,20 @@ credit.exe < demo_input.txt
 Repo: https://github.com/nghtuantu228/CreditManagementProgram
 
 ```
-credit.c          <- toan bo chuong trinh
-build.bat         <- script bien dich
-demo_input.txt    <- kich ban nhap de demo
-README.md         <- tai lieu nay
-.gitignore        <- loai tru file bien dich + cau hinh Cursor
+credit.c          ← toàn bộ chương trình
+build.bat         ← script biên dịch
+demo_input.txt    ← kịch bản nhập để demo
+README.md         ← tài liệu này
+.gitignore        ← loại trừ file biên dịch + cấu hình Cursor
 ```
 
-Cac thu muc `.cursor/`, `.claude/`, file `AGENTS.md` va `CLAUDE.md` la **cau hinh cong cu
-theo truc tiep voi Cursor IDE**, khong lien quan toi do an nen da duoc loai khoi git.
+Các thư mục `.cursor/`, `.claude/` và file `AGENTS.md`, `CLAUDE.md` là **cấu hình công cụ
+đi kèm Cursor IDE**, không liên quan tới đồ án nên đã loại khỏi git.
 
-**Lenh git thuong dung:**
-
+**Các lệnh git thường dùng:**
 ```bash
-git status              # xem trang thai
-git add credit.c        # dua file vao vung chuan bi
-git commit -m "mo ta"   # tao commit
-git push                # day len GitHub
+git status              # xem trạng thái
+git add credit.c        # đưa file vào vùng chuẩn bị
+git commit -m "mô tả"   # tạo commit
+git push                # đẩy lên GitHub
 ```
-
